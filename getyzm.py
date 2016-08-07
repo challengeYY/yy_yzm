@@ -13,14 +13,8 @@ class GetYZM:
             
             }
         )
-        self.cookies={
-            "hiido_ui":"0.46785925464965605"
-            ,"hd_newui":"0.4318241186668985"
-            ,"Hm_lvt_c493393610cdccbddc1f124d567e36ab":"1468983462,1470533704,1470533846"
-            ,"LGNJSESSIONID":"964ac516629f08f314eecda863e27c1e56910194"
-            ,"token":"a8g6_3vyt2h7:x916y45z6x951106169249:u10487u0351440y4y5x4w9z39"
-        }
-
+        self.cookies='hiido_ui=0.46785925464965605; hd_newui=0.4318241186668985; Hm_lvt_c493393610cdccbddc1f124d567e36ab=1468983462,1470533704,1470533846; LGNJSESSIONID=c5ea333be3b2f2942fc7956f33b803bbefbb8c37; token=aug3_3vvt8h0:3xv5vyyzu3v3v38vxy337v:21u427904524u7x9799656684'
+        self.http.headers.update({'Cookie':self.cookies})
         #self.http.proxies= {'http': 'http://127.0.0.1:8080','https': 'http://127.0.0.1:8080'}  #用于调试
         self.imgpath=os.path.join(os.getcwd(),'imgs')
         if(os.path.exists(self.imgpath)==False):
@@ -30,8 +24,7 @@ class GetYZM:
         for i in range(num):
             print('%d/%d' % (i+1,num))
             res=self.http.get("https://lgn.yy.com/verify/x2/getsvcode.do?appid=5034&username=dsfawefasdfawfawef&_ts=%d" % int(time.time()*1000)
-                ,verify=False
-                ,cookies=self.cookies)
+                ,verify=False)
             imgname=os.path.join(self.imgpath,'%d.png' % f_idx)
             while(os.path.isfile(imgname)):
                 f_idx+=1
